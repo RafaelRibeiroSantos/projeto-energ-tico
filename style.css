@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+
+}
+
+main{
+
+}
+
+.item{
+    /* todo elemento que tiver somente a classe item, a função display: none; faz com que os elementos não apareçam na viewport */
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* overflow para não ter scrool caso a imagem fique muito grande */
+    overflow: hidden;
+    background-color: var(--background);
+
+}
+
+.item.active{
+    /* quando o elemneto tiver a classe active, a função display: block; faz o elemento aparecer na viewport */
+    display: block;
+    
+}
+
+
+.title{
+    font-size: 12em;
+    color: #fff;
+    text-align: center;
+    font-weight: bolder;
+    /* para deixar o elemento centralizado ao centro sem usar display flex usamos o position absolute para indicar a posição do elemento, e o left: 50% para o elemento se deslocar 50% para esquerda da viewport e top: 50% para posicionar o elemento no centro da tela, e o transform: translate(-50%, -50%) para ajustar o elemento ao centro exato. */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+   
+}
+
+.fruta{
+    width: 90%;
+    position: absolute;
+    top: 0;
+    /* usamos z-index para posicionar os elementos na ordem que queremos, o elemento com maior z-index fica na frente dos outros. */
+    z-index: 3;
+}
+
+.refrigerante{
+    z-index: 2;
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#prev, #next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: #eee9;
+    border: 1px solid #eee9;
+    color: #eee;
+    font-size: x-large;
+    font-family: monospace;
+    cursor: pointer;
+    z-index: 4;
+    border-radius: 50%;
+}
+
+#prev{
+    left: 30px;
+}  
+
+#next{
+    right: 30px;
+}
+
+#next:hover, #prev:hover{
+    width: 53px;
+    height: 53px;
+    transition: 0.1s;
+}
+
+@keyframes toActive{
+    from{
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.item.active img.fruta,.title{
+    animation: toActive 1s ease-in-out 1;
+}
